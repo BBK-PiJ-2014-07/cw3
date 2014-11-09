@@ -33,6 +33,14 @@ public class ArrayList implements List {
 		}
 	}
 
+	public Object getValue(int index) {
+		return array[index];
+	}
+
+	public Object[] getArray() {
+		return array;
+	}
+
 	public ReturnObject add(Object item) {
 		if (item.equals(null)) {
 			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
