@@ -34,8 +34,8 @@ public class LinkedList implements List {
 	*/
 
 	public ReturnObject get(int index){
-		if (index < 0) || (list >= size) {
-			return new ReturnObject(null);
+		if (index < 0 || list >= size) {
+			return new Object(null);
 		} else {
 			ReturnObject thisObj = head;
 			for (int i=0; i<index; i++){

@@ -13,25 +13,36 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject add(int index, Object item) {
-		//check to see if there's enough space
-		if (array.length == arraySize+1) {
-			makeBiggerArray();
+		//is the index valid?
+		if (index < 0 || index >= array.length || item.equals(null)) {
+			return new ReturnObjectImpl(null);
+		} else {
+			//check to see if there's enough space
+			if (array.length == arraySize+1) {
+				makeBiggerArray();
+			}
+			//reassign array values to current position+1
+			for (int i=arraySize; i>index; i--) {
+				array[i+1] = array[i];
+			}
+			array[index] = item;
+			arraySize++;
+			return new ReturnObjectImpl(array[index]);
 		}
-		//reassign array values to current position+1
-		for (int i=arraySize; i>index; i--) {
-			array[i+1] = array[i];
-		}
-		array[index] = item;
-		arraySize++;
 	}
 
 	public ReturnObject add(Object item) {
-		if (array.length == arraySize+1) {
-			makeBiggerArray();
-		}
+		if (item.equals(null)) {
+			return new ReturnObjectImpl(null);
+		} else {
+			if (array.length == arraySize+1) {
+				makeBiggerArray();
+			}
 
-		array[arraySize] = item;
-		arraySize++;
+			array[arraySize] = item;
+			arraySize++;
+			return new ReturnObjectImpl(array[arraySize]);
+		}
 	}
 
 	public boolean isEmpty() {
@@ -47,18 +58,18 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject get(int index){
-		ReturnObject result = new ReturnObject(array[index]);
+		ReturnObject result = new ReturnObjectImpl(array[index]);
 		return result;
 	}
 
 	public ReturnObject remove(int index){
 		if (array[index].equals(null)){
-			return new ReturnObject(null);
+			return new ReturnObjectImpl(null);
 			} else {
 				for (int i=index; i<arraySize; i++) {
 					array[i] = array[i+1];
 				}
-				return new ReturnObject(array[index]);
+				return new ReturnObjectImpl(array[index]);
 			}
 	} 
 
