@@ -14,8 +14,10 @@ public class ArrayList implements List {
 
 	public ReturnObject add(int index, Object item) {
 		//is the index valid?
-		if (index < 0 || index >= array.length || item.equals(null)) {
-			return new ReturnObjectImpl(null);
+		if (index < 0 || index >= array.length) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else if (item.equals(null)) {
+			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 			//check to see if there's enough space
 			if (array.length == arraySize+1) {
@@ -33,12 +35,11 @@ public class ArrayList implements List {
 
 	public ReturnObject add(Object item) {
 		if (item.equals(null)) {
-			return new ReturnObjectImpl(null);
+			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 			if (array.length == arraySize+1) {
 				makeBiggerArray();
 			}
-
 			array[arraySize] = item;
 			arraySize++;
 			return new ReturnObjectImpl(array[arraySize]);
@@ -64,7 +65,7 @@ public class ArrayList implements List {
 
 	public ReturnObject remove(int index){
 		if (array[index].equals(null)){
-			return new ReturnObjectImpl(null);
+			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
 			} else {
 				for (int i=index; i<arraySize; i++) {
 					array[i] = array[i+1];

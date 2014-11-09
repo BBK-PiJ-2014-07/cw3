@@ -1,15 +1,21 @@
 
 public class ReturnObjectImpl implements ReturnObject {
 	Object returnObj;
+	ErrorMessage errorMsg;
 	
 //two constructors - one with args and one without. Use the one with args for error messages as strings.
 
 	public ReturnObjectImpl(Object obj) {
 		returnObj = obj;
+		errorMsg = null; 
 	}
 	
+	public ReturnObjectImpl(ErrorMessage error) {
+		errorMsg = error;
+		returnObj = null;
+	}
 	public boolean hasError() {
-		if (returnObj.equals(null)){
+		if (!errorMsg.equals(null)){
 			return true;
 		} else {
 			return false;
@@ -18,16 +24,11 @@ public class ReturnObjectImpl implements ReturnObject {
 
 	public ErrorMessage getError() {
 		if (hasError()) {
-			return null;
+			return errorMsg;
 		} else {
-			System.out.println("NO_ERROR");
 			return null;
 		}
 	}
-
-	/** 
-	ErrorMessage???? 
-	*/
 
 	public Object getReturnValue() {
 		if (!hasError()) {
