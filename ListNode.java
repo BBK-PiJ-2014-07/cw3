@@ -2,8 +2,8 @@
 * A node that makes up a linked list, functioning as a wrapper for an Object.
 */
 public class ListNode {
-	Object nodeContents;
-	ListNode next;
+	private Object nodeContents;
+	private ListNode next;
 
 	public ListNode(Object nodeContents) {
 		this.nodeContents = nodeContents;
@@ -38,7 +38,6 @@ public class ListNode {
 	public Object remove(){
 		Object deletedObj = this.next.getObject();
 		this.next = this.next.next;
-		System.out.println("Next node is now " + this.next.getObject());
 		return deletedObj;
 	}
 }

@@ -2,8 +2,8 @@
 * Implementation of ReturnObject that returns an object or an error depending on method outcome. 
 */
 public class ReturnObjectImpl implements ReturnObject {
-	Object returnObj;
-	ErrorMessage errorMsg;
+	private Object returnObj;
+	private ErrorMessage errorMsg;
 	
 //two constructors - one with args and one without. Use the one with args for error messages as strings.
 
