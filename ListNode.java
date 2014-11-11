@@ -25,9 +25,17 @@ public class ListNode {
 		}
 	}
 
-	public void addElsewhere(Object item){
+	public Object addElsewhere(Object item){
 			ListNode temp = this.next;
 			this.next = new ListNode(item);
 			this.next.next = temp;
+			return this.next.getObject();
+	}
+
+	public Object remove(){
+		Object deletedObj = this.next.getObject();
+		this.next = this.next.next;
+		System.out.println("Next node is now " + this.next.getObject());
+		return deletedObj;
 	}
 }

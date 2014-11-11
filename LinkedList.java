@@ -4,10 +4,8 @@ Implementation of List interface as linked list of objects.
 
 public class LinkedList implements List {
 	private ListNode head;
-	private int listSize;
 	
 	public LinkedList() {
-		listSize = 0;
 		head = null;
 	}
 	
@@ -35,14 +33,18 @@ public class LinkedList implements List {
 		if (index < 0 || index >= size()) {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
-			ListNode thisNode = head;
-			for (int i=0; i<index; i++){
-				//start at first element and recursively move up
-				thisNode = thisNode.getNext();
-			}
-			ReturnObject thisObj = new ReturnObjectImpl(thisNode.getObject());
+			ReturnObject thisObj = new ReturnObjectImpl(moveUpList(index).getObject());
 			return thisObj;
 		}
+	}
+
+	public ListNode moveUpList(int index){
+		ListNode thisNode = head;
+		for (int i=0; i<index; i++){
+			//start at first element and recursively move up
+			thisNode = thisNode.getNext();
+		}
+		return thisNode;
 	}
 
 	public void makeHead(ListNode node){
@@ -51,23 +53,24 @@ public class LinkedList implements List {
 
 	public ReturnObject add(Object item) {
 		head.addAtEnd(item);
-		listSize++;
 		return new ReturnObjectImpl(item);
 	}
 
 	public ReturnObject add(int index, Object item) {
-		ListNode result = null;
-		for (int i=0; i<index; i++) {
-			result = head.getNext();
+		if (index <= 0 || index >= size()) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else {
+			return new ReturnObjectImpl(moveUpList(index-1).addElsewhere(item));
 		}
-		result.addElsewhere(item);
-		listSize++;
-		return (ReturnObject) result.getNext();
 	}
 
 	public ReturnObject remove(int index){
-		return new ReturnObjectImpl(ErrorMessage.NO_ERROR);
-		//does stuff
+		if (index <= 0 || index >= size()) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else {				
+			//pass index into moveUpList but minus 1 because previous node's "next" needs to be reassigned
+			return new ReturnObjectImpl(moveUpList(index-1).remove());
+		}
 	}
 }
 
