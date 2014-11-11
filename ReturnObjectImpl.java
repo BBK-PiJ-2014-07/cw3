@@ -15,7 +15,7 @@ public class ReturnObjectImpl implements ReturnObject {
 		returnObj = null;
 	}
 	public boolean hasError() {
-		if (!errorMsg.equals(null)){
+		if (errorMsg != null){
 			return true;
 		} else {
 			return false;

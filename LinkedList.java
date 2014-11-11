@@ -3,16 +3,16 @@ Implementation of List interface as linked list of objects.
 */
 
 public class LinkedList implements List {
-	private Object head;
-	private int size;
+	private ListNode head;
+	private int listSize;
 	
 	public LinkedList() {
-		size = 0;
+		listSize = 0;
 		head = null;
 	}
 	
 	public boolean isEmpty() {
-		if (index=0) {
+		if (head == null) {
 			return true;
 		} else {
 			return false;
@@ -21,31 +21,53 @@ public class LinkedList implements List {
 	
 
 	public int size(){
-		int result = 0;
-		if (this.getNext().equals(null)){
-			return result;
+		return count(head);
+	}
+
+	public int count(ListNode node){
+		if (node != null) {
+			return 1 + count(node.getNext());
 		} else {
-			result++;
-			this.getNext().size();
+			return 0;
 		}
 	}
-	/**
-	requires a Node with getNext method - is there a better way to do this? 
-	*/
-
 	public ReturnObject get(int index){
-		if (index < 0 || list >= size) {
-			return new Object(null);
+		if (index < 0 || index >= size()) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
-			ReturnObject thisObj = head;
+			ListNode thisNode = head;
 			for (int i=0; i<index; i++){
 				//start at first element and recursively move up
-				thisNode = this.getNext();
+				thisNode = thisNode.getNext();
 			}
+			ReturnObject thisObj = new ReturnObjectImpl(thisNode.getObject());
 			return thisObj;
 		}
 	}
 
-	//add() in both its implementations
+	public void makeHead(ListNode node){
+		head = node;
+	}
+
+	public ReturnObject add(Object item) {
+		head.addAtEnd(item);
+		listSize++;
+		return new ReturnObjectImpl(item);
+	}
+
+	public ReturnObject add(int index, Object item) {
+		ListNode result = null;
+		for (int i=0; i<index; i++) {
+			result = head.getNext();
+		}
+		result.addElsewhere(item);
+		listSize++;
+		return (ReturnObject) result.getNext();
+	}
+
+	public ReturnObject remove(int index){
+		return new ReturnObjectImpl(ErrorMessage.NO_ERROR);
+		//does stuff
+	}
 }
 
