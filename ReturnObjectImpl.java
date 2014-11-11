@@ -1,4 +1,6 @@
-
+/**
+* Implementation of ReturnObject that returns an object or an error depending on method outcome. 
+*/
 public class ReturnObjectImpl implements ReturnObject {
 	Object returnObj;
 	ErrorMessage errorMsg;

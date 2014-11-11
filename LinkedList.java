@@ -1,5 +1,5 @@
 /** 
-Implementation of List interface as linked list of objects. 
+* Implementation of List interface as linked list of Object-containing ListNodes. 
 */
 
 public class LinkedList implements List {

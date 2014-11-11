@@ -1,3 +1,6 @@
+/**
+* A node that makes up a linked list, functioning as a wrapper for an Object.
+*/
 public class ListNode {
 	Object nodeContents;
 	ListNode next;
