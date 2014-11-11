@@ -17,6 +17,10 @@ public class LinkedList implements List {
 		}
 	}
 	
+	public void makeHead(ListNode node){
+		head = node;
+	}
+
 	public int size(){
 		return count(head);
 	}
@@ -48,7 +52,7 @@ public class LinkedList implements List {
 
 	public ReturnObject add(Object item) {
 		if (head == null){
-			head = new ListNode(item);
+			makeHead(new ListNode(item));
 		} else {
 			head.addAtEnd(item);
 		}
@@ -62,7 +66,7 @@ public class LinkedList implements List {
 					return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 				} else {
 					if (head == null && index == 0) {
-						head = new ListNode(item);
+						makeHead(new ListNode(item));
 						return new ReturnObjectImpl(head.getObject());
 					} else if (head != null && index > 0) {
 						return new ReturnObjectImpl(moveUpList(index-1).addElsewhere(item));

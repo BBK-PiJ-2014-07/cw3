@@ -18,7 +18,16 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 	}
 
 	public FunctionalList rest(){
-		//do
-		return new FunctionalLinkedList();
+		FunctionalLinkedList newList = new FunctionalLinkedList();
+		if (getHead() != null){
+			//Copy all the nodes that follow the head into a new list
+			ListNode thisNode = getHead();
+			for (int i=0; i<this.size()-1; i++){
+				newList.add(thisNode.getNext().getObject());
+				thisNode = thisNode.getNext();
+			}
+		}
+		return newList;
 	} 
 }
+
