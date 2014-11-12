@@ -79,8 +79,13 @@ public class LinkedList implements List {
 	}
 
 	public ReturnObject remove(int index){
-		if (index <= 0 || index >= size()) {
+		if (index < 0 || index >= size()) {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else if (index == 0) {
+			//if index is 0, it is the head node, so make the head node the next node
+			Object deletedObject = head.getObject();
+			makeHead(head.getNext());
+			return new ReturnObjectImpl(deletedObject);
 		} else {				
 			//pass index into moveUpList but minus 1 because previous node's "next" needs to be reassigned
 			return new ReturnObjectImpl(moveUpList(index-1).remove());

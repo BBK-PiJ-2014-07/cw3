@@ -25,8 +25,8 @@ public class LinkedListTest {
 		ll.add("three");
 		ll.add("four");
 		ll.add("five");
-		ll.remove(2);
-		assertEquals(ll.get(2).getReturnValue(), "four");
+		ll.remove(0);
+		assertEquals(ll.get(0).getReturnValue(), "two");
 	}
 
 	@Test
