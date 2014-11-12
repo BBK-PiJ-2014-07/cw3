@@ -11,8 +11,8 @@ public class ImprovedStackTest {
 	
 	@Before
 	public void buildUp(){
-		stack.push("1");
 		stack.push("X");
+		stack.push("1");
 		stack.push("2");
 		stack.push("3");
 		stack.push("4");
@@ -41,6 +41,6 @@ public class ImprovedStackTest {
 	@Test
 	public void testReverse(){
 		ImprovedStack newStack = stack.reverse();
-		assertEquals(newStack.top().getReturnValue(),"1");
+		assertEquals(newStack.top().getReturnValue(),"X");
 	}
 }

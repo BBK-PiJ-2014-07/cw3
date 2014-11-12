@@ -35,8 +35,6 @@ public class ImprovedStackImpl implements ImprovedStack {
 		for (int i=0; i<size; i++) {
 			newStack.push(internalStack.pop().getReturnValue());
 		}
-		//get the head of the internalList contained within internalStack, as it can't be removed
-		newStack.push(internalStack.top().getReturnValue());
 		return newStack;
 	}
 
@@ -57,23 +55,16 @@ public class ImprovedStackImpl implements ImprovedStack {
 			if (internalStack.top().getReturnValue().equals(object)){
 				internalStack.pop();
 			} else {
-				System.out.println("Now pushing to new stack: " + internalStack.top().getReturnValue());
 				tempStack.push(internalStack.pop().getReturnValue());
 			}
 		}
-		//then copy across the head node
-		tempStack.push(internalStack.top().getReturnValue());
-
+		
 		//empty the internalStack
 		internalStack = new ImprovedStackImpl(new LinkedList());
 		int tempSize = tempStack.size();
 		for (int i=0; i<tempSize; i++){
 			//put all the objects in tempStack back on internalStack
-		System.out.println("Now pushing to old stack: " + tempStack.top().getReturnValue());
-
 			internalStack.push(tempStack.pop().getReturnValue());
 		}
-		//then put the last object on, which is the head of tempStack
-		internalStack.push(tempStack.top().getReturnValue());
 	}
 }
