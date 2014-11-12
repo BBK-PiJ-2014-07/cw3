@@ -36,8 +36,7 @@ public class LinkedList implements List {
 		if (index < 0 || index >= size()) {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else {
-			ReturnObject thisObj = new ReturnObjectImpl(moveUpList(index).getObject());
-			return thisObj;
+			return new ReturnObjectImpl(moveUpList(index).getObject());
 		}
 	}
 
@@ -62,7 +61,7 @@ public class LinkedList implements List {
 
 	public ReturnObject add(int index, Object item) {
 		if (item != null) {
-			if (index < 0 || index >= size()) {
+			if (index < 0 || index > size()) {
 					return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 				} else {
 					if (head == null && index == 0) {

@@ -28,19 +28,16 @@ public class ImprovedStackImpl implements ImprovedStack {
 	public int size(){
 		return internalStack.size();
 	}
-	/**
-	 * Returns a copy of this stack with the items reversed, the top
-	 * elements on the original stack is at the bottom of the new
-	 * stack and viceversa.
-	 * 
-	 * @return a copy of this stack with the items reversed. 
-	 */
+
 	public ImprovedStack reverse(){
-		List newList = new LinkedList();
+		ImprovedStack newStack = new ImprovedStackImpl(new LinkedList());
 		for (int i=0; i<internalStack.size(); i++) {
-			newList.add(internalStack.pop());
+			System.out.println("Pop is " + internalStack.top().getReturnValue());
+			newStack.push(internalStack.pop().getReturnValue());
 		}
-		return new ImprovedStackImpl(newList);
+		//get the head of the internalList contained within internalStack, as it can't be removed
+		newStack.push(internalStack.top().getReturnValue());
+		return newStack;
 	}
 
 	/**
