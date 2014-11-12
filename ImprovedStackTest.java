@@ -12,28 +12,35 @@ public class ImprovedStackTest {
 	@Before
 	public void buildUp(){
 		stack.push("head");
+		stack.push("2");
+		stack.push("3");
+		stack.push("4");
+		stack.push("5");
+		stack.push("6");
 		stack.push("1");
 		stack.push("2");
 		stack.push("3");
 		stack.push("4");
 		stack.push("5");
 		stack.push("6");
-		stack.push("7");
-		stack.push("8");
-		stack.push("9");
-
+		stack.push("1");
+		stack.push("2");
+		stack.push("3");
+		stack.push("4");
+		stack.push("5");
+		stack.push("6");
 	}
 	
 	@Test
 	public void testRemove(){
-		//stack.remove("2");
-		//assertTrue(stack.size()==5);
+		stack.remove("2");
+		assertTrue(stack.size()==15);
 	}
 
 	@Test
 	public void testReverse(){
-		System.out.println(stack.size());
 		ImprovedStack newStack = stack.reverse();
+		System.out.println(newStack.size());
 		assertEquals(newStack.top().getReturnValue(),"head");
 	}
 }

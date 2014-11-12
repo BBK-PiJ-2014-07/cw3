@@ -30,9 +30,9 @@ public class ImprovedStackImpl implements ImprovedStack {
 	}
 
 	public ImprovedStack reverse(){
+		int size = internalStack.size();
 		ImprovedStack newStack = new ImprovedStackImpl(new LinkedList());
-		for (int i=0; i<internalStack.size(); i++) {
-			System.out.println("Pop is " + internalStack.top().getReturnValue());
+		for (int i=0; i<size; i++) {
 			newStack.push(internalStack.pop().getReturnValue());
 		}
 		//get the head of the internalList contained within internalStack, as it can't be removed
@@ -50,6 +50,9 @@ public class ImprovedStackImpl implements ImprovedStack {
 	 * @param object the object to remove
 	 */
 	public void remove(Object object){
-
+		int size = internalStack.size();
+		for (int i=0; i<size; i++){
+			if (internalStack)
+		}
 	}
 }
