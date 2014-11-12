@@ -50,9 +50,26 @@ public class ImprovedStackImpl implements ImprovedStack {
 	 * @param object the object to remove
 	 */
 	public void remove(Object object){
-		int size = internalStack.size();
-		for (int i=0; i<size; i++){
-			if (internalStack)
+		int intStackSize = internalStack.size();
+		ImprovedStack tempStack = new ImprovedStackImpl(new LinkedList());
+		//iterate through internalStack transferring each object that DOESN'T equal the argument to a temporary stack
+		for (int i=0; i<intStackSize; i++){
+			if (internalStack.top().getReturnValue().equals(object)){
+				internalStack.pop();
+			} else {
+				tempStack.push(internalStack.pop().getReturnValue());
+			}
 		}
+		//then check if the head of internalStack contains the argument - if not, transfer that too 
+		
+		//empty the internalStack
+		internalStack = new ImprovedStackImpl(new LinkedList());
+		int tempSize = tempStack.size();
+		for (int i=0; i<tempSize; i++){
+			//put all the objects in tempStack back on internalStack
+			internalStack.push(tempStack.pop().getReturnValue());
+		}
+		//then put the last object on, which is the head of tempStack
+		//internalStack.push(tempStack.top().getReturnValue());
 	}
 }
