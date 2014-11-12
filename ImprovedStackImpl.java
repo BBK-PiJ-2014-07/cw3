@@ -38,19 +38,10 @@ public class ImprovedStackImpl implements ImprovedStack {
 		return newStack;
 	}
 
-	/**
-	 * Removes the given object from the stack if it is
-	 * there. Multiple instances of the object are all removed.
-	 *
-	 * Classes implementing this method must use method .equals() to
-	 * check whether the item is in the stack or not.
-	 * 
-	 * @param object the object to remove
-	 */
 	public void remove(Object object){
 		int intStackSize = internalStack.size();
 		ImprovedStack tempStack = new ImprovedStackImpl(new LinkedList());
-		//iterate through internalStack transferring each object that DOESN'T equal the argument to a temporary stack
+		//transferring each object that DOESN'T equal the argument to a temporary stack
 		for (int i=0; i<intStackSize; i++){
 			if (internalStack.top().getReturnValue().equals(object)){
 				internalStack.pop();
