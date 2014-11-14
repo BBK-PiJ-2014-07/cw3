@@ -6,21 +6,34 @@ import java.util.Arrays;
 public class ArrayListTest {
 	
 	@Test 
-	public void testAdd() {
+	public void testAddSingleValue() {
 		ArrayList list = new ArrayList();
 		list.add("One");
-		assertNotNull(list.get(0));
+		assertEquals(list.get(0).getReturnValue(),"One");
 	}
 
 	@Test
-	public void testAddMoreThan5(){
+	public void testIsEmptyWhenEmpty() {
 		ArrayList list = new ArrayList();
-		for (int i=0; i<8; i++){
+		list.add("One");
+		list.remove(0);
+		assertTrue(list.isEmpty());
+	}
+
+	@Test
+	public void testIsEmptyWhenNotEmpty() {
+		ArrayList list = new ArrayList();
+		list.add("One");
+		assertFalse(list.isEmpty());
+	}
+
+	@Test
+	public void testAddMoreThan10(){
+		ArrayList list = new ArrayList();
+		for (int i=0; i<15; i++){
 			list.add(i);
 		}
-		System.out.println(Arrays.toString(list.getArray()));
-
-		assertEquals(list.get(7).getReturnValue(), 7);
+		assertEquals(list.get(14).getReturnValue(), 14);
 
 	}
 	@Test
@@ -34,32 +47,11 @@ public class ArrayListTest {
 		assertEquals(list.get(1).getReturnValue(),"C");
 	}
 
-
-
-	public static void main(String[] args) {
-		ArrayListTest test = new ArrayListTest();
-		test.run();
-	}
-
-	public void run() {
+	@Test
+	public void testRemoveOnlyValue() {
 		ArrayList list = new ArrayList();
 		list.add("0");
-		list.add("1");
-		list.add("2");
-		list.add("3");
-		list.add("4");
-		list.add("5");
-		list.add("6");
-		list.add("7");
-		list.add("8");
-		list.add("9");
-		list.add("10");
-		list.add("11");
-		
-		//list.remove(1);
-
-		System.out.println(Arrays.toString(list.getArray()));
+		list.remove(0);
+		assertEquals(list.size(),0);
 	}
-
-
 }

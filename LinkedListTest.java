@@ -25,8 +25,26 @@ public class LinkedListTest {
 		ll.add("three");
 		ll.add("four");
 		ll.add("five");
+		ll.remove(1);
+		assertEquals(ll.get(1).getReturnValue(), "three");
+	}
+
+	@Test
+	public void testRemoveOnlyValue(){
+		LinkedList ll = new LinkedList();
+		ll.add("head");
 		ll.remove(0);
-		assertEquals(ll.get(0).getReturnValue(), "two");
+		assertTrue(ll.isEmpty());
+		}
+
+	@Test
+	public void testremoveHead() {
+		LinkedList ll = new LinkedList();
+		ll.add("head");
+		ll.add("two");
+		ll.add("three");
+		ll.remove(0);
+		assertEquals(ll.get(0).getReturnValue(),"two");
 	}
 
 	@Test

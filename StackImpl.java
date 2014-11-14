@@ -9,7 +9,7 @@ public class StackImpl extends AbstractStack {
 	}
 
 	public boolean isEmpty(){
-		return (internalList.get(0) == null) ?  true : false;
+		return (internalList.size() == 0) ?  true : false;
 	}
 
 	public int size(){

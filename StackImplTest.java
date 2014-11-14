@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 
 public class StackImplTest {
 	@Test 
-	public void testIsEmpty() {
+	public void testIsEmptyWhenNotEmpty() {
 		List l = new LinkedList();
 		l.add("head");
 		l.add("1");
@@ -11,6 +11,13 @@ public class StackImplTest {
 		l.add("3");
 		AbstractStack s = new StackImpl(l);
 		assertFalse(s.isEmpty());
+	}
+
+	@Test 
+	public void testIsEmptyWhenEmpty() {
+		List l = new LinkedList();
+		AbstractStack s = new StackImpl(l);
+		assertTrue(s.isEmpty());
 	}
 
 	@Test
@@ -34,6 +41,23 @@ public class StackImplTest {
 		assertEquals(l.get(2).getReturnValue(), s.top().getReturnValue());
 	}
 
+	@Test
+	public void testPopOnlyValue() {
+		List l = new LinkedList();
+		AbstractStack s = new StackImpl(l);
+		s.push("head");
+		s.pop();
+		assertEquals(s.size(),0);
+	}
+	@Test
+	public void testPushOneValue() {
+		List l = new LinkedList();
+		AbstractStack s = new StackImpl(l);
+		s.push("head");
+		assertEquals(s.size(),1);
+
+	}
+
 	@Test 
 	public void testPop(){
 		List l = new LinkedList();
@@ -47,8 +71,6 @@ public class StackImplTest {
 		s.push("6");
 		s.push("7");
 		s.push("8");
-
-
 		s.pop();
 		assertEquals(l.get(7).getReturnValue(), s.top().getReturnValue());
 	}

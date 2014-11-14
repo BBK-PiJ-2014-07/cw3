@@ -78,6 +78,7 @@ public class ArrayList implements List {
 				for (int i=index; i<arraySize; i++) {
 					array[i] = array[i+1];
 				}
+				arraySize--;
 				return new ReturnObjectImpl(array[index]);
 			}
 	} 
