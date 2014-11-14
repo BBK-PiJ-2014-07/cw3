@@ -34,8 +34,26 @@ public class ImprovedStackTest {
 	@Test
 	public void testRemove(){
 		stack.remove("X");
-		System.out.println("Top of stack is " + stack.top().getReturnValue());
 		assertEquals(stack.size(),15);
+	}
+	@Test
+	public void testremoveOnlyValue(){
+		List anotherList = new LinkedList();
+		ImprovedStack anotherStack = new ImprovedStackImpl(anotherList);
+		anotherStack.push(0);
+		anotherStack.remove(0);
+		assertEquals(anotherStack.size(),0);
+	}
+
+	@Test
+	public void testWithArray(){
+		List array = new ArrayList();
+		ImprovedStack arrayStack = new ImprovedStackImpl(array);
+		arrayStack.push(0);
+		arrayStack.push(1);
+		arrayStack.push(2);
+		arrayStack.remove(1);
+		assertEquals(arrayStack.size(),2);
 	}
 
 	@Test

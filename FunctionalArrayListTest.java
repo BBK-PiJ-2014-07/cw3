@@ -4,49 +4,21 @@ import java.util.Arrays;
 
 
 public class FunctionalArrayListTest {
-	/*
+	
 	@Test 
-	public void testAdd() {
-		ArrayList list = new ArrayList();
+	public void testHead() {
+		FunctionalList list = new FunctionalArrayList();
 		list.add("One");
-		assertNotNull(list.get(0));
+		assertEquals(list.head().getReturnValue(), "One");
 	}
 	@Test
-	public void testRemove() {
-		ArrayList list = new ArrayList();
+	public void testRest() {
+		FunctionalList list = new FunctionalArrayList();
 		list.add("A");
 		list.add("B");
 		list.add("C");
 		list.add("D");
-		list.remove(1);
-		assertEquals(list.get(1),null);
+		FunctionalList restList = list.rest();
+		assertEquals(restList.get(0).getReturnValue(),list.get(1).getReturnValue());
 	}
-
-
-*/
-	public static void main(String[] args) {
-		FunctionalArrayListTest test = new FunctionalArrayListTest();
-		test.run();
-	}
-
-	public void run() {
-		FunctionalArrayList list = new FunctionalArrayList();
-		list.add("A");
-		list.add("B");
-		list.add("C");
-		list.add("D");
-		list.add("E");
-		list.add("F");
-		list.add("A");
-		list.add("B");
-		list.add("C");
-		list.add("D");
-		list.add("E");
-		list.add("F");
-		list.remove(1);
-		FunctionalArrayList list2 = (FunctionalArrayList) list.rest();
-		System.out.println(Arrays.toString(list2.getArray()));
-	}
-
-
 }
