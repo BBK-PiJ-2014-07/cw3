@@ -18,22 +18,7 @@ public class FunctionalLinkedListTest {
 		fll.add("two");
 		fll.add("three");
 		fll.add("four");
-		System.out.println(fll.get(3).getReturnValue());
-		System.out.println(fll.rest().get(2).getReturnValue());
+		assertEquals(fll.get(1).getReturnValue(), fll.rest().get(0).getReturnValue());
 
-		assertEquals(fll.get(3).getReturnValue(), fll.rest().get(2).getReturnValue());
-
-	}
-
-	public static void main(String[] args){
-		FunctionalLinkedListTest fllt = new FunctionalLinkedListTest();
-		fllt.run();
-	}
-
-	public void run(){
-		FunctionalLinkedList fll = new FunctionalLinkedList();
-		fll.add("head");
-		fll.add("two");
-		fll.add("three");
 	}
 }
