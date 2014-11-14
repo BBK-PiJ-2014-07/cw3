@@ -16,7 +16,7 @@ public class ArrayList implements List {
 		//is the index valid?
 		if (index < 0 || index >= array.length) {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
-		} else if (item.equals(null)) {
+		} else if (item == null) {
 			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 			//check to see if there's enough space
@@ -42,7 +42,7 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject add(Object item) {
-		if (item.equals(null)) {
+		if (item == null) {
 			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
 		} else {
 			if (array.length == arraySize+1) {
