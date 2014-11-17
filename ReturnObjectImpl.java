@@ -28,7 +28,7 @@ public class ReturnObjectImpl implements ReturnObject {
 		if (hasError()) {
 			return errorMsg;
 		} else {
-			return null;
+			return ErrorMessage.NO_ERROR;
 		}
 	}
 

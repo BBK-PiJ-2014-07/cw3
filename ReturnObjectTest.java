@@ -23,7 +23,7 @@ public class ReturnObjectTest {
 	@Test
 	public void testGetErrorWithObject(){
 		ReturnObject ro = new ReturnObjectImpl("object");
-		assertNull(ro.getError());
+		assertEquals(ro.getError(), ErrorMessage.NO_ERROR);
 	}
 
 	@Test
