@@ -27,6 +27,27 @@ public class ArrayListTest {
 		assertFalse(list.isEmpty());
 	}
 
+
+	@Test
+	public void testGetOutOfBounds() {
+		ArrayList list = new ArrayList();
+		list.add("A");
+		list.add("B");
+		list.add("C");
+		list.add("D");
+		assertTrue(list.get(4).hasError());
+		}
+
+	@Test
+	public void testAddOutOfBounds() {
+		ArrayList list = new ArrayList();
+		list.add("A");
+		list.add("B");
+		list.add("C");
+		list.add("D");
+		assertTrue(list.add(6,"E").hasError());
+	}
+
 	@Test
 	public void testAddMoreThan10(){
 		ArrayList list = new ArrayList();

@@ -14,7 +14,7 @@ public class ArrayList implements List {
 
 	public ReturnObject add(int index, Object item) {
 		//is the index valid?
-		if (index < 0 || index >= array.length) {
+		if (index < 0 || index >= arraySize) {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		} else if (item == null) {
 			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
@@ -55,7 +55,7 @@ public class ArrayList implements List {
 	}
 
 	public boolean isEmpty() {
-		if (arraySize ==0) {
+		if (arraySize == 0) {
 			return true;
 		} else { 
 			return false;
@@ -67,12 +67,16 @@ public class ArrayList implements List {
 	}
 
 	public ReturnObject get(int index){
-		ReturnObject result = new ReturnObjectImpl(array[index]);
-		return result;
+		if (index < 0 || index >= arraySize) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		} else {
+			ReturnObject result = new ReturnObjectImpl(array[index]);
+				return result;
+			}
 	}
 
 	public ReturnObject remove(int index){
-		if (array[index].equals(null)){
+		if (array[index] == null){
 			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
 			} else {
 				for (int i=index; i<arraySize; i++) {
