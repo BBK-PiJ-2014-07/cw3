@@ -36,7 +36,7 @@ public class ReturnObjectImpl implements ReturnObject {
 		if (!hasError()) {
 			return returnObj;
 		} else {
-			return null;
+			return errorMsg;
 		}
 	}
 }

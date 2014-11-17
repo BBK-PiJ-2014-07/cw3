@@ -35,7 +35,7 @@ public class ReturnObjectTest {
 	@Test
 	public void testGetReturnValueWithError() {
 		ReturnObject ro = new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
-		assertNull(ro.getReturnValue());
+		assertEquals(ro.getReturnValue(), ErrorMessage.INVALID_ARGUMENT);
 	}
 	
 }
